@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>Test Site</title>
+		<script type="text/javascript">
+			socket = new WebSocket("ws://" + window.location.host + "/chat/");
+			socket.onmessage = function(response) {
+			    console.log(response.data);
+			}
+			socket.onopen = function() {
+			    socket.send({"test":"data"});
+			}
+			// Call onopen directly if socket is already open
+			if (socket.readyState == WebSocket.OPEN) socket.onopen();
+		</script>
+	</head>
+	<body>
+
+	</body>
+
+</html>
